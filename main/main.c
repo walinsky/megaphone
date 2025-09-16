@@ -61,7 +61,7 @@ void init_rx_i2s_chan()
                 .din  = GPIO_NUM_14,
                 .invert_flags = {
                         .mclk_inv = false,
-                        .bclk_inv = true,
+                        .bclk_inv = false,
                         .ws_inv   = false,
                 },
         },
@@ -91,11 +91,11 @@ void app_main(void)
                 }
                 
                 // left
-                buf_ptr_write[0] = buf_ptr_read[2]; // mid
-                buf_ptr_write[1] = buf_ptr_read[3]; // high
+                buf_ptr_write[0] = buf_ptr_read[6]; // mid
+                buf_ptr_write[1] = buf_ptr_read[7]; // high
                 // right
-                buf_ptr_write[2] = buf_ptr_read[6]; // mid
-                buf_ptr_write[3] = buf_ptr_read[7]; // high
+                buf_ptr_write[2] = buf_ptr_read[2]; // mid
+                buf_ptr_write[3] = buf_ptr_read[3]; // high
 
                 buf_ptr_write += 2 * (I2S_DATA_BIT_WIDTH_16BIT / 8);
                 buf_ptr_read += 2 * (I2S_DATA_BIT_WIDTH_32BIT / 8);
